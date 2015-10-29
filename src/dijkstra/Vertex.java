@@ -3,8 +3,10 @@ package dijkstra;
 import java.util.ArrayList;
 
 public class Vertex {
+
 	String vertexName;
-	int distFromSource;
+	Vertex prioVertex;
+	int distFromSource = Integer.MAX_VALUE;
 	ArrayList<Edge> edges;
 
 	public Vertex(String vertexName) {
@@ -12,15 +14,11 @@ public class Vertex {
 		this.edges = new ArrayList<Edge>();
 	}
 
-	public void addEdge(Edge edge){
+	public void addEdge(Edge edge) {
 		this.edges.add(edge);
 	}
-	
-	public int getDistFromSource() {
-		return distFromSource;
-	}
 
-	public void setDistFromSource(int distFromSource) {
-		this.distFromSource = distFromSource;
+	public void setAsSourceVertex() {
+		this.distFromSource = 0;
 	}
 }
