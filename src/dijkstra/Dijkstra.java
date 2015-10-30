@@ -13,16 +13,14 @@ public class Dijkstra {
 		while (!q.isEmpty() && !currentVertex.equals(dest)) {
 			Vertex nextVertex = null;
 			for (Edge edge : currentVertex.edges) {
-				if (!edge.passed) {
-					if (edge.va.equals(currentVertex))
-						nextVertex = edge.vb;
-					else
-						nextVertex = edge.va;
+				if (edge.va.equals(currentVertex))
+					nextVertex = edge.vb;
+				else
+					nextVertex = edge.va;
 
-					if (nextVertex.distFromSource > currentVertex.distFromSource + edge.weight) {
-						nextVertex.distFromSource = currentVertex.distFromSource + edge.weight;
-						nextVertex.prioVertex = currentVertex;
-					}
+				if (nextVertex.distFromSource > currentVertex.distFromSource + edge.weight) {
+					nextVertex.distFromSource = currentVertex.distFromSource + edge.weight;
+					nextVertex.prioVertex = currentVertex;
 				}
 			}
 			q = Utils.heapify(q);
